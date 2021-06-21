@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      template="/WEB-INF/templates/template.xhtml"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<ui:define name="titre">Fiche Vaisseau</ui:define>
+ 
+ <ui:define name="corps">
+ 	<h:form enctype="multipart/form-data">
+ 		
+ 		<p:fieldset legend="Fiche vaisseau">
+ 			
+ 			<p:panelGrid columns="8">
+ 				
+ 				<p:outputLabel for="nom" value="Nom:" />
+				<p:inputText id="nom" value="#{ficheVaisseauBean.vaisseau.nom}" />
+				<p:message for="nom"></p:message>
+					
+ 				<p:outputLabel for="Taille" value="Taille :"></p:outputLabel>
+ 				<p:inputNumber id="taille" value="#{ficheVaisseauBean.vaisseau.taille}"></p:inputNumber>
+ 				<p:message for="taille"></p:message>
+ 				
+ 				<p:outputLabel for="vitesse" value="vitesse :"></p:outputLabel>
+ 				<h:panelGrid columns="1" style="margin-bottom: 10px">
+           		<p:inputText id="vitesse" value="#{ficheVaisseauBean.vaisseau.vitesse}"/>
+            	<p:slider for="vitesse" range="false"/>
+       			</h:panelGrid>
+ 				<p:message for="Vitesse"></p:message>
+ 				
+ 				<p:outputLabel for="nbEquipage" value="nbEquipage :"></p:outputLabel>
+ 				<p:inputNumber id="nbEquipage" value="#{ficheVaisseauBean.vaisseau.nbEquipage}"></p:inputNumber>
+ 				<p:message for="nbEquipage"></p:message>
+ 				
+ 				<p:outputLabel for="hyperdrive" value="hyperdrive :"></p:outputLabel>
+ 				<p:toggleSwitch id ="hyperdrive" value="#{ficheVaisseauBean.vaisseau.hyperdrive}"/>
+ 				<p:message for="hyperdrive"></p:message>
+ 				
+ 				<p:outputLabel for="Types d'armes" value="Types armes :"></p:outputLabel>
+ 				<p:selectManyCheckbox id="typeArme" value="#{ficheVaisseauBean.vaisseau.typesArme}">
+		            <f:selectItem itemLabel="TOURELLE_LASE" itemValue="ficheVaisseauBean.vaisseau.typesArme"/>
+		            <f:selectItem itemLabel="CANON_LASER" itemValue="ficheVaisseauBean.vaisseau.typesArme"/>
+		            <f:selectItem itemLabel="CANON_LASER_LOURD" itemValue="ficheVaisseauBean.vaisseau.typesArme"/>
+		            <f:selectItem itemLabel="TURBO_LASER" itemValue="ficheVaisseauBean.vaisseau.typesArme"/>
+		            <f:selectItem itemLabel="LANCEUR_TORPILLE_IONIC" itemValue="ficheVaisseauBean.vaisseau.typesArme"/>
+		            <f:selectItem itemLabel="RAYON_TRACTEUR" itemValue="ficheVaisseauBean.vaisseau.typesArme"/>   
+		        </p:selectManyCheckbox>
+		        <p:message for="types d'armes"></p:message>
+ 				
+ 				<p:outputLabel for="classe" value="classe:" />
+ 				<p:selectOneMenu id="classe" value="#{ficheVaisseauBean.vaisseau.classe}">
+ 					<f:selectItems value="#{ficheVaisseauBean.classeVaisseau}" var="p" itemValue="#{p}" />
+ 				</p:selectOneMenu>
+ 				<p:message for="classe"></p:message>
+ 			
+ 				
+ 				<p:outputLabel for="photo" value="Photo : "/>
+ 				<p:fileUpload skinSimple="true" value="#{ficheVaisseauBean.vaisseau.photo}" id="photo" mode="simple"/>
+ 				<p:message for="photo"></p:message>
+ 				
+ 				
+ 				
+ 				<p:commandButton value="Annuler" styleClass="ui-button-secondary" action="/publication/liste.xhtml?faces-redirect=true" immediate="true"/>
+ 				<p:commandButton value="Valider" styleClass="ui-button-primary" actionListener="#{fichePublicationBean.enregistrer()}" action="/publication/liste.xhtml?faces-redirect=true" update="@form"/>
+ 			</p:panelGrid>
+ 		
+ 		</p:fieldset>
+ 	</h:form>
+ 
+ 	
+ </ui:define>
+</ui:composition>

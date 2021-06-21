@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="titre">Liste usine</ui:define>
+
+	<ui:define name="corps">
+
+		<h:form>
+		
+			<p:commandButton icon="pi pi-plus"
+						styleClass="ui-button-primary" value="Créer une nouvelle usine" action="/usine/fiche.xhtml" />
+
+			<p:dataTable var="a" value="#{listeUsineBean.usine}"
+				rowKey="#{a.id}" lazy ="true" paginator="true" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+				rows="10" rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Nom" filterBy="#{a.nom}" sortBy="#{a.nom}">
+					<h:outputText value="#{a.nom}" />
+				</p:column>
+				<p:column headerText="Localisation" sortBy="#{a.localisation}">
+					<h:outputText value="#{a.localisation}" />
+				</p:column>
+				<p:column headerText="Actions">
+					<p:commandButton icon="pi pi-pencil"
+						styleClass="rounded-button ui-button-primary" actionListener="#{listeUsineBean.modifier(a)}" action="/usine/fiche.xhtml?faces-redirect=true" />
+					<p:commandButton icon="pi pi-times"
+						styleClass="rounded-button ui-button-danger"
+						action="#{listeUsineBean.delete(a)}" update="@form">
+						
+					<p:confirm header="Confirmation" message="Etes vous sur?" icon="ui-icon-alert"/>
+						</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:confirmDialog global="true">
+				<p:commandButton value="Oui" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Non" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

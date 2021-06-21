@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="titre">Fiche usine</ui:define>
+
+	<ui:define name="corps">
+
+		<h:form>
+		
+			<p:fieldset legend="Fiche usine">
+			
+				<p:panelGrid columns="3">
+				
+					<p:outputLabel for="nom" value="Nom:" />
+					<p:inputText id="nom" value="#{ficheAuteurBean.auteur.nom}" />
+					<p:message for="nom"></p:message>
+				
+					<p:outputLabel for="Localisation" value="Localisation:" />
+					<p:selectOneMenu id="localisation" value="#{ficheUsineBean.usine.localisation}">
+						<f:selectItems value="#{ficheUsineBean.localisation}" var="p" itemValue="#{p}" itemLabel="#{p.toString()}" />
+					</p:selectOneMenu>
+					<p:message for="localisation"></p:message>
+					
+					
+					<p:outputLabel for="listeVaisseau" value="listeVaisseau :" />
+					<p:pickList id="listeVaisseau" value="#{ficheUsineBean.usine.listeVaisseauFabricable}" var="listeVaisseauFabricable" itemLabel="#{listeVaisseauFabricable}" itemValue="#{listeVaisseauFabricable}"/>
+					<p:message for="listeVaisseau"></p:message>
+					
+					<p:commandButton value="Retour" styleClass="ui-button-secondary" action="/usine/liste.xhtml?faces-redirect=true" immediate="true"/>
+					<p:commandButton value="Valider" styleClass="ui-button-primary" actionListener="#{ficheUsineBean.enregistrer()}" update="@form" action="/auteur/liste.xhtml?faces-redirect=true" />
+				
+				</p:panelGrid>
+			
+			</p:fieldset>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

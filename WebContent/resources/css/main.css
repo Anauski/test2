@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+h1 {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	background: -moz-linear-gradient(top, #4c4e5a 0%, #2c2d33 100%);
+	color: white;
+	font-family: "solo";
+}
+
+.header {
+	color: white;
+	text-align : center ;
+	font-size : 2.2em;
+	font-family: "solo";
+	background-color: brown;
+	margin-right: 5%;
+	margin-left: 5%;
+	border-radius: 5px;
+	margin-top: 0px;
+}
+
+.content {
+	margin-right: 20%;
+	margin-left: 20%;
+	margin-top: 70px;
+}
+
+.footer {
+	padding-bottom: 3em;
+	background: url("#{resource['images:footer.png']}");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	padding-top: 5.5em;
+}
+
+.buttonAlign {
+	text-align: rigtht;
+	width: 100%;
+}
+
+.ui-widget-content {
+	border: 1px solid #a8a8a8;
+	background: rgba(96, 96, 96, 0.9);
+	color: #fff;
+}
+
+.ui-fieldset
+{
+	margin-top:0.6em;
+	font-family: solo;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	background: url("#{resource['images:sw-2.png']}");
+	background-repeat: no-repeat;
+    background-size: 100% 100%;
+	
+	height: 1500px;
+}
+
+#formulaire {
+	background: #FFDEAD;
+}
+
+#formulaire div {
+	background: #FFDEAD;
+}
+
+#formDataTable {
+	padding-top: 20px;
+}
+
+.ui-widget-content .ui-inputfield {
+	width: 100%;
+}
+
+#formulaire inputFormat {
+	witdh: 100%;
+}
+
+.action 
+{
+	display:flex;
+}
+#usineAffichageForm button
+{
+	width:33%;
+}
+#usineAffichageForm button span
+{
+	font-family:solo;
+	font-size:0.5em;
+}
+.action th
+{
+	display:flex;
+}
+.panelgridUsine
+{
+	width:100%;
+
+}
